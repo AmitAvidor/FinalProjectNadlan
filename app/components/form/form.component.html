@@ -1,0 +1,110 @@
+<div class="login-wrapper" fxLayout="row" fxLayoutAlign="center center">
+  <mat-card class="box">
+    <mat-card-header>
+      <mat-card-title>Form</mat-card-title>
+    </mat-card-header>
+
+    <form [formGroup]="dataForm" class="example-form">
+      <mat-card-content>
+        <mat-form-field class="example-full-width">
+          <input
+            formControlName="building_floors"
+            matInput
+            placeholder="Building Floors"
+          />
+        </mat-form-field>
+        <div
+          *ngIf="
+            building_floors?.invalid &&
+            (building_floors?.dirty || building_floors?.touched)
+          "
+        >
+          <div *ngIf="building_floors?.errors?.['required']">
+            Building floors of asset is required
+          </div>
+        </div>
+        <mat-form-field class="example-full-width">
+          <input
+            formControlName="building_year"
+            matInput
+            placeholder="Building year"
+          />
+        </mat-form-field>
+        <div
+          *ngIf="
+            building_year?.invalid &&
+            (building_year?.dirty || building_year?.touched)
+          "
+        >
+          <div *ngIf="building_year?.errors?.['required']">
+            Floor of asset is required
+          </div>
+        </div>
+        <mat-form-field class="example-full-width">
+          <input
+            formControlName="room_num"
+            matInput
+            placeholder="Numbers of rooms"
+          />
+        </mat-form-field>
+
+        <div
+          *ngIf="room_num?.invalid && (room_num?.dirty || room_num?.touched)"
+        >
+          <div *ngIf="room_num?.errors?.['required']">
+            Numbers of rooms of asset is required
+          </div>
+        </div>
+
+        <mat-form-field class="example-full-width">
+          <input
+            formControlName="floor_num"
+            matInput
+            placeholder="Number of Floor"
+          />
+        </mat-form-field>
+        <div
+          *ngIf="floor_num?.invalid && (floor_num?.dirty || floor_num?.touched)"
+        >
+          <div *ngIf="floor_num?.errors?.['required']">
+            Number of floor is required
+          </div>
+        </div>
+      </mat-card-content>
+      <button
+        [disabled]="dataForm.invalid"
+        (click)="submit()"
+        mat-stroked-button
+        color="accent"
+        class="btn-block"
+      >
+        Submit
+      </button>
+    </form>
+    <h3 *ngIf="res" style="text-align: center; text-decoration: underline">
+      Price:
+      <div style="color: red; font-weight: bold">{{ res }}₪</div>
+    </h3>
+  </mat-card>
+</div>
+
+<!-- <div class="login-wrapper" fxLayout="row" fxLayoutAlign="center center"></div>
+<form>
+   <div class="form-group">
+    <label for="building_floors"></label>
+    <input id="building_floors" type="number" class="form-control">
+</div>
+<div class="form-group">
+    <label for="building_year">Year Built</label>
+    <input id="building_year" id="building_year" type="number" class="form-control">
+</div>
+<div class="form-group">
+    <label for="deal_amount">Closing Deal Amount</label>
+    <input id="deal_amount" id="deal_amount" type="number"class="form-control">
+</div>
+<div class="form-group">
+    <label for="room_num">Number of Rooms</label>
+    <input id="room_num" id="room_num" type="number"class="form-control">
+</div>
+<button class="btn btn-primary">Submit</button>
+</form> -->

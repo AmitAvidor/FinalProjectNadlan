@@ -1,0 +1,59 @@
+<div class="login-wrapper" fxLayout="row" fxLayoutAlign="center center">
+  <mat-card class="box">
+    <mat-card-header>
+      <mat-card-title>Register</mat-card-title>
+    </mat-card-header>
+
+    <form [formGroup]="registerForm" class="example-form">
+
+      <mat-card-content>
+        <mat-form-field class="example-full-width">
+          <input formControlName="name" matInput placeholder="Name">
+        </mat-form-field>
+
+        <div *ngIf="name?.invalid && (name?.dirty || name?.touched)">
+          <div *ngIf="name?.errors?.['required']">Name is required </div>
+
+        </div>
+
+        <mat-form-field class="example-full-width">
+          <input formControlName="username" matInput placeholder="Username">
+        </mat-form-field>
+
+        <div *ngIf="username?.invalid && (username?.dirty || username?.touched)">
+          <div *ngIf="username?.errors?.['required']">Username is required </div>
+
+        </div>
+
+        <mat-form-field class="example-full-width">
+          <input type="email" formControlName="email" matInput placeholder="Email">
+        </mat-form-field>
+        <div *ngIf="email?.invalid && (email?.dirty || email?.touched)">
+          <div *ngIf="email?.errors?.['required']">Email is required</div>
+          <div *ngIf="email?.errors?.['pattern']">Email is not correct</div>
+        </div>
+
+        <mat-form-field class="example-full-width">
+          <input type="password" formControlName="password" matInput placeholder="Password">
+        </mat-form-field>
+
+        <div *ngIf="password?.invalid && (password?.dirty || password?.touched)">
+          <div *ngIf="password?.errors?.['required']">Password is required</div>
+        </div>
+
+        <mat-form-field class="example-full-width">
+          <input formControlName="phone" matInput placeholder="Phone">
+        </mat-form-field>
+
+        <div *ngIf="phone?.invalid && (phone?.dirty || phone?.touched)">
+          <div *ngIf="phone?.errors?.['required']">Phone is required </div>
+          <div *ngIf="phone?.errors?.['pattern']">Phone is not correct </div>
+        </div>
+
+      </mat-card-content>
+      <div style="font-weight:bold;color:red">{{errorMessage}}</div>
+      <button (click)="register()" [disabled]="registerForm.invalid" mat-stroked-button color="accent" class="btn-block">Register</button>
+
+    </form>
+  </mat-card>
+</div>
